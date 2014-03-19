@@ -1,0 +1,40 @@
+{
+  "manifest_version": 2,
+
+  "name": "饿了么？",
+  "description": "饿了就快点决定吃什么啊！",
+  "version": "1.0.0",
+
+  "permissions": [
+  	"tabs",
+    "http://ele.me/",
+    "http://r.ele.me/"
+  ],
+  "background" : {
+    "scripts": ["js/background.js"]
+  },
+  "page_action": {
+    "default_icon": "icon.gif",
+    "default_title": "饿了么",
+    "default_popup": "about.html"
+  },
+  "icons":{
+  	"16": "icon.gif",
+  	"48":"icon.gif",
+  	"128":"icon.gif"
+  },
+  "content_scripts":[{
+  	"matches":[
+  		"http://ele.me/*",
+      "http://r.ele.me/*"
+  	],
+  	"js":[
+  		"js/jquery.js",
+  		"js/main.js"
+  	],
+  	"run_at": "document_idle"
+  }],
+  "web_accessible_resources":[
+  	"*"
+  ]
+}

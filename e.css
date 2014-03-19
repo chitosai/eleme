@@ -1,0 +1,20 @@
+.helper_roll{
+    margin-left: 10px;
+}
+
+._helper_highlighted{
+    background: #FFFB99;
+}
+._helper_highlighted:hover{
+    background: #FFFB99;
+}
+/*._helper_highlighted .food_name::after{
+    background: #E66D47;
+    border-radius: 3px;
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, .1);
+    color: #fff;
+    content: attr(_helper_surprise);
+    font-size: 12px;
+    text-shadow: 1px 1px 0 #4D1C0D;
+    padding: 1px 5px;
+}*/
