@@ -14,14 +14,14 @@
     "scripts": ["js/background.js"]
   },
   "page_action": {
-    "default_icon": "icon.gif",
+    "default_icon": "icon.png",
     "default_title": "饿了么",
     "default_popup": "about.html"
   },
   "icons":{
-  	"16": "icon.gif",
-  	"48":"icon.gif",
-  	"128":"icon.gif"
+  	"16": "icon.png",
+  	"48":"icon.png",
+  	"128":"icon.png"
   },
   "content_scripts":[{
   	"matches":[
