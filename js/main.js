@@ -7,41 +7,56 @@ $('<link>').attr({
     'href': 'chrome-extension://' + chrome.runtime.id + '/e.css'
 }).appendTo($('head'));
 
-// var surprise = ['送可乐', '四折', '第二份免费', '加鸡腿', '送COCO奶茶', '加20元送妹子'];
+function roll() {
+    // var surprise = ['送可乐', '四折', '第二份免费', '加鸡腿', '送COCO奶茶', '加20元送妹子'];
 
-var sections = $('.restaurant-menu section'),
-    total = sections.length,
-    section,
-    button = $('<button>').addClass('_helper_roll').text('roll菜');
+    var sections = $('.restaurant-menu section'),
+        total = sections.length,
+        section,
+        button = $('<button>').addClass('_helper_roll').text('roll菜');
 
-for( var i = 0; i < total; i++ ) {
-    section = sections.eq(i);
-    button.clone().appendTo(section.children('h2'));
+    for( var i = 0; i < total; i++ ) {
+        section = sections.eq(i);
+        button.clone().appendTo(section.children('h2'));
+    }
+
+    // 最前面浮动的那个header也要加上按钮
+    // button.clone().appendTo($('#toolbar_text'));
+    $('#menu_toolbar').hide();
+
+    $('.restaurant-menu').on('click', '._helper_roll', function(){
+        var list = $(this).parent().parent().children('ul').children(),
+            count = list.length;
+
+        if( !count ) return;
+
+        var rand = Math.floor(Math.random()*count),
+            selected = list.eq(rand);
+
+        $('._helper_highlighted').removeClass('_helper_highlighted');
+
+        selected.addClass('_helper_highlighted');
+
+        // var rand_surprise = Math.floor(Math.random() * (surprise.length * 2));
+        // if( rand_surprise < surprise.length ) 
+        //     selected.find('.food_name').attr('_helper_surprise', surprise[rand_surprise]);
+
+        var y = selected.offset().top;
+        $('html, body').animate({'scrollTop': y - 200});
+
+        return false;
+    });
 }
 
-// 最前面浮动的那个header也要加上按钮
-// button.clone().appendTo($('#toolbar_text'));
-$('#menu_toolbar').hide();
+function blacklist() {
+    var fav = $('.rst_unfavor_btn.rst-aside-favor');
+    if( fav.hasClass('hide') )
+        return;
+    $('body').css({
+        'background': '#f00'
+    });
+    $('<div>').addClass('_helper_blacklisted').text('黑名单').appendTo($('.rst_header_con'));
+}
 
-$('.restaurant-menu').on('click', '._helper_roll', function(){
-    var list = $(this).parent().parent().children('ul').children(),
-        count = list.length;
-
-    if( !count ) return;
-
-    var rand = Math.floor(Math.random()*count),
-        selected = list.eq(rand);
-
-    $('._helper_highlighted').removeClass('_helper_highlighted');
-
-    selected.addClass('_helper_highlighted');
-
-    // var rand_surprise = Math.floor(Math.random() * (surprise.length * 2));
-    // if( rand_surprise < surprise.length ) 
-    //     selected.find('.food_name').attr('_helper_surprise', surprise[rand_surprise]);
-
-    var y = selected.offset().top;
-    $('html, body').animate({'scrollTop': y - 200});
-
-    return false;
-});
+roll();
+setTimeout(blacklist, 1000);
