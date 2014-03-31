@@ -1,5 +1,17 @@
 ._helper_roll{
-    margin-left: 3px;
+    background: -webkit-linear-gradient(top, #fff, #f7f7f7);
+    border: 1px solid #d9d9d9;
+    border-radius: 2px;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, .05);
+    margin-left: 5px;
+    vertical-align: top;
+    outline: none;
+    position: relative;
+    top: -4px;
+}
+._helper_roll:hover{
+    background: -webkit-linear-gradient(top, #fffce2, #fffacf);
+    border-color: #ffcf6e;
 }
 
 ._helper_highlighted{
